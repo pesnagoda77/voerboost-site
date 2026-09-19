@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoerBoost</title>
+    <script type="module" crossorigin src="/assets/index-5b_Ej2dh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-fvgyz5dx.css">
+    <style>
+      /* HOME: equal height product cards */
+      [class*="items-stretch"] > div[class*="rounded-2xl"] {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      [class*="items-stretch"] > div[class*="rounded-2xl"] > div[class*="p-6"] {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      [class*="items-stretch"] > div[class*="rounded-2xl"] img[class*="rounded-xl"] {
+        margin-top: auto !important;
+      }
+      /* PRODUCTS: comparison table - images align to bottom */
+      div[class*="sm:flex-row"][class*="items-stretch"] > div[class*="flex-1"] {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+      }
+      /* PRODUCTS: push right image down by one line (~24px) */
+      div[class*="sm:flex-row"][class*="items-stretch"] > div[class*="flex-1"]:nth-child(2) img {
+        margin-top: 24px !important;
+      }
+      /* === COMPACT FORM + MICRO FOOTER === */
+      .vb-form-section {
+        background: #f8faf8;
+        padding: 20px 16px;
+        border-top: 2px solid #1f7a4d;
+      }
+      .vb-form-container {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .vb-form-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #14532d;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .vb-form-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .vb-form-group {
+        flex: 1;
+        margin-bottom: 0;
+      }
+      .vb-form-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        color: #1c2733;
+        margin-bottom: 3px;
+      }
+      .vb-form-input {
+        width: 100%;
+        padding: 9px 11px;
+        border: 1.5px solid #dde5ec;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #1c2733;
+        box-sizing: border-box;
+      }
+      .vb-form-input:focus {
+        outline: none;
+        border-color: #1f7a4d;
+      }
+      .vb-consent {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11.5px;
+        color: #5a6a5a;
+        white-space: nowrap;
+      }
+      .vb-consent input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        accent-color: #1f7a4d;
+        flex-shrink: 0;
+      }
+      .vb-consent a {
+        color: #1f7a4d;
+        text-decoration: underline;
+      }
+      .vb-form-btn {
+        padding: 9px 22px;
+        background: linear-gradient(135deg, #1f7a4d, #14532d);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .vb-form-btn:hover { opacity: 0.9; }
+      .vb-form-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .vb-form-error {
+        color: #c0392b;
+        font-size: 12px;
+        margin-top: 4px;
+        display: none;
+      }
+      .vb-form-success {
+        background: #e8f5e9;
+        color: #2e7d32;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 6px;
+        display: none;
+      }
+      .vb-form-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      /* Micro Footer */
+      .vb-micro-footer {
+        background: #1c2733;
+        color: rgba(255,255,255,0.55);
+        padding: 10px 14px;
+        text-align: center;
+        font-size: 11.5px;
+      }
+      .vb-micro-footer a {
+        color: #a8d5ba;
+        text-decoration: none;
+      }
+      .vb-micro-footer a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <div id="vb-legal-root"></div>
+
+    <script>
+    // === VoerBoost Compact Legal Injection ===
+    (function() {
+      var INJECTED = false;
+
+      function injectLegal() {
+        if (INJECTED) return;
+        INJECTED = true;
+
+        var root = document.getElementById('vb-legal-root');
+        if (!root) return;
+
+        // 1. COMPACT FORM
+        var formHTML =
+          '<section class="vb-form-section" id="order-samples">' +
+            '<div class="vb-form-container">' +
+              '<h3 class="vb-form-title">Попробуйте VoerBoost на своей ферме</h3>' +
+              '<form id="vb-contact-form" action="https://formsubmit.co/info@voerboost.ru" method="POST">' +
+                '<input type="hidden" name="_subject" value="Новая заявка VoerBoost">' +
+                '<input type="hidden" name="_template" value="table">' +
+                '<input type="hidden" name="_next" value="https://voerboost.ru">' +
+                '<input type="hidden" name="_captcha" value="false">' +
+                '<input type="text" name="_honey" style="display:none">' +
+                '<div class="vb-form-row">' +
+                  '<div class="vb-form-group">' +
+                    '<label class="vb-form-label">Имя *</label>' +
+                    '<input type="text" name="name" class="vb-form-input" placeholder="Иван Иванов" required>' +
+                  '</div>' +
+                  '<div class="vb-form-group">' +
+                    '<label class="vb-form-label">Телефон *</label>' +
+                    '<input type="tel" name="phone" class="vb-form-input" placeholder="+7 (999) 123-45-67" required>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="vb-form-actions">' +
+                  '<div class="vb-consent">' +
+                    '<input type="checkbox" id="vb-consent-check" name="consent" required>' +
+                    '<label for="vb-consent-check">Согласен(на) с <a href="/privacy-policy.html" target="_blank">политикой конфиденциальности</a></label>' +
+                  '</div>' +
+                  '<button type="submit" class="vb-form-btn" id="vb-submit-btn">Отправить</button>' +
+                '</div>' +
+                '<div class="vb-form-error" id="vb-form-error">Заполните поля и подтвердите согласие.</div>' +
+                '<div class="vb-form-success" id="vb-form-success">Заявка отправлена! Мы свяжемся с вами.</div>' +
+              '</form>' +
+            '</div>' +
+          '</section>';
+
+        root.insertAdjacentHTML('beforeend', formHTML);
+
+        // 2. MICRO FOOTER
+        var footerHTML =
+          '<footer class="vb-micro-footer">' +
+            '© ' + new Date().getFullYear() + ' VoerBoost · ' +
+            '<a href="/requisites.html">Реквизиты</a> · ' +
+            '<a href="/privacy-policy.html">Политика конфиденциальности</a> · ' +
+            '<a href="mailto:info@voerboost.ru">info@voerboost.ru</a>' +
+          '</footer>';
+        root.insertAdjacentHTML('beforeend', footerHTML);
+
+        // 3. FORM HANDLER
+        var form = document.getElementById('vb-contact-form');
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            var consent = document.getElementById('vb-consent-check');
+            var errorBox = document.getElementById('vb-form-error');
+            var btn = document.getElementById('vb-submit-btn');
+
+            if (!consent.checked) {
+              e.preventDefault();
+              if (errorBox) { errorBox.style.display = 'block'; }
+              return false;
+            }
+            if (errorBox) errorBox.style.display = 'none';
+            btn.textContent = '...';
+            btn.disabled = true;
+          });
+        }
+      }
+
+      // Wait for React to mount, then inject
+      var attempts = 0;
+      var timer = setInterval(function() {
+        attempts++;
+        var root = document.getElementById('root');
+        if (root && root.children.length > 0) {
+          clearInterval(timer);
+          setTimeout(injectLegal, 800);
+        } else if (attempts > 50) {
+          clearInterval(timer);
+          injectLegal(); // inject anyway
+        }
+      }, 200);
+    })();
+    </script>
+
+    <script>
+      // --- Scroll to order-samples via sessionStorage ---
+      (function() {
+        var target = sessionStorage.getItem('vb-scroll');
+        if (target) {
+          sessionStorage.removeItem('vb-scroll');
+          var tryScroll = function() {
+            var el = document.getElementById(target);
+            if (el) {
+              setTimeout(function() { el.scrollIntoView({behavior:'smooth',block:'start'}); }, 800);
+              return true;
+            }
+            return false;
+          };
+          if (!tryScroll()) {
+            var n = 0, i = setInterval(function() { n++; if (tryScroll() || n > 40) clearInterval(i); }, 250);
+          }
+        }
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (link) {
+            var style = link.getAttribute('style') || '';
+            var href = link.getAttribute('href') || '';
+            if (href === '/products' && style.indexOf('eb7d23') > -1) {
+              sessionStorage.setItem('vb-scroll', 'order-samples');
+            }
+          }
+        });
+
+        (function() {
+          var observer = new MutationObserver(function(mutations) {
+            var imgs = document.querySelectorAll('img[alt="VoerBoost A"]');
+            imgs.forEach(function(img) {
+              if (!img.dataset.vfixed) {
+                var parent = img.closest('div');
+                if (parent && /[а-яА-ЯёЁ]/.test(parent.innerText)) {
+                  img.dataset.vfixed = '1';
+                  img.style.marginTop = '36px';
+                }
+              }
+            });
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        })();
+      })();
+    </script>
+  </body>
+</html>
